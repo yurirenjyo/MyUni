@@ -1,7 +1,8 @@
+import { AuthGuardService as AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { LoginComponent } from './login/login.component';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule, Router, CanActivate } from '@angular/router';
 import { environment } from './../environments/environment';
 
 
@@ -56,23 +57,25 @@ enableProdMode();
     AngularFireAuthModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      { path: 'login', component: LoginComponent },
       { path: 'professors', component: ProfessorsComponent },
       { path: 'students', component: StudentsComponent },
       { path: 'majors', component: MajorsComponent },
       { path: 'book-supplies', component: BookSuppliesComponent },
-      { path: 'check-out', component: CheckOutComponent },    
-      { path: 'order-success', component: OrderSuccessComponent },
-      { path: 'my/orders', component: MyOrdersComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'admin/products', component: AdminProductsComponent },
-      { path: 'admin/orders', component: AdminOrdersComponent },
-      { path: 'login', component: LoginComponent },
+      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },    
+      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]  },
+      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]  },
+      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard]  },
+      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard]  },
+      
 
     ]),
     NgbModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

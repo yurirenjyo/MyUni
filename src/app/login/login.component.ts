@@ -1,7 +1,5 @@
 import { AuthService } from './../auth.service';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase/app';
 
 
 @Component({
@@ -14,8 +12,6 @@ export class LoginComponent {
   constructor(private auth: AuthService) {
     
    }
-
-
 
   login() {
     this.auth.login();
