@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "school-26c13": {
+      "hosting": {
+        "school": [
+          "school-26c13"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "school-26c13"
+  }
+}
