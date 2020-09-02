@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { AuthGuardService as AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { NgModule, Component, enableProdMode } from '@angular/core';
@@ -75,7 +76,8 @@ enableProdMode();
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
